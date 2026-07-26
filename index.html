@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f6f1e7">
-<title>복을 읽다 · 자체 사주 엔진</title>
+<title>복을 읽다 · 고민을 함께 읽는 사주 엔진</title>
 <style>
 :root{--bg:#f6f1e7;--card:#fffdf8;--ink:#25231f;--muted:#7d766c;--line:#e8dfd1;--deep:#253629;--soft:#e9f0e7;--gold:#b58a45;--danger:#a13c35}
 *{box-sizing:border-box}html,body{width:100%;max-width:100%;overflow-x:hidden;overscroll-behavior-x:none}body{margin:0;touch-action:pan-y;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:linear-gradient(180deg,#fbf7ef,#f6f1e7);color:var(--ink)}
@@ -15,7 +15,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 8px 24px #46351e0d}.score{font-size:44px;font-weight:850;color:var(--deep)}.score small{font-size:14px;color:var(--muted)}.row{display:flex;justify-content:space-between;align-items:center}.meter{height:10px;background:#eee7db;border-radius:999px;overflow:hidden;margin:14px 0 18px}.meter i{display:block;height:100%;width:83%;background:linear-gradient(90deg,#809a72,#c8a05d)}.quote{line-height:1.65}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.tag{background:var(--soft);color:#4a614a;border-radius:999px;padding:8px 11px;font-size:13px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.menu{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;min-height:126px}.menu strong{display:block;margin-top:16px}.menu p{font-size:13px;color:var(--muted);line-height:1.45}
 .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:#fffdf8ef;backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}.nav button{border:0;background:none;color:var(--muted);font-size:11px}.nav b{display:block;font-size:20px}
-.modal{position:fixed;inset:0;background:#16161261;display:none;align-items:flex-end;justify-content:center;z-index:9}.modal.open{display:flex}.sheet{width:min(520px,100%);max-width:100vw;max-height:92vh;overflow-y:auto;overflow-x:hidden;overscroll-behavior-x:none;background:#fffdf8;border-radius:28px 28px 0 0;padding:22px 20px calc(32px + env(safe-area-inset-bottom))}.sheethead{display:flex;justify-content:space-between;align-items:center}.close{border:0;border-radius:50%;width:36px;height:36px}.field{margin-top:18px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.field input,.field select{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:white}.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{padding:12px;border-radius:13px;border:1px solid var(--line);background:#fff;color:var(--muted)}.seg button.on{background:var(--deep);color:#fff;border-color:var(--deep)}.seg button:disabled{opacity:.45;cursor:not-allowed}.full{width:100%;margin-top:22px}
+.modal{position:fixed;inset:0;background:#16161261;display:none;align-items:flex-end;justify-content:center;z-index:9}.modal.open{display:flex}.sheet{width:min(520px,100%);max-width:100vw;max-height:92vh;overflow-y:auto;overflow-x:hidden;overscroll-behavior-x:none;background:#fffdf8;border-radius:28px 28px 0 0;padding:22px 20px calc(32px + env(safe-area-inset-bottom))}.sheethead{display:flex;justify-content:space-between;align-items:center}.close{border:0;border-radius:50%;width:36px;height:36px}.field{margin-top:18px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.field input,.field select,.field textarea{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:white;color:var(--ink)}.field textarea{min-height:108px;resize:vertical;line-height:1.55}.concern-count{margin-top:6px;text-align:right;font-size:11px;color:var(--muted)}.concern-badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:10px;padding:7px 10px;border-radius:999px;background:#fff1d7;color:#76541d;font-size:12px;font-weight:750}.reading-section{padding:18px 0;border-top:1px dashed var(--line)}.reading-section:first-child{border-top:0;padding-top:0}.reading-section h4{margin:0 0 9px;font-size:18px;line-height:1.4}.reading-section p{margin:0;line-height:1.8}.time-caveat{margin-top:12px;padding:11px 12px;border-radius:12px;background:#f5f1e8;color:var(--muted);font-size:12px;line-height:1.55}.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{padding:12px;border-radius:13px;border:1px solid var(--line);background:#fff;color:var(--muted)}.seg button.on{background:var(--deep);color:#fff;border-color:var(--deep)}.seg button:disabled{opacity:.45;cursor:not-allowed}.full{width:100%;margin-top:22px}
 .engine{font-size:12px;color:#49604b;background:#edf3ea;border:1px solid #d5e2d1;padding:11px 12px;border-radius:12px;margin-top:14px;line-height:1.55}
 .result{display:none;margin-top:18px}.result.show{display:block}.summary{background:#f2ecdf;border-radius:18px;padding:18px}.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.pillar{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 4px;text-align:center}.pillar small{color:var(--muted)}.pillar b{display:block;font-size:24px;margin-top:8px;letter-spacing:.08em}.pillar em{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:5px}
 .element-list{display:grid;gap:10px;margin-top:14px}.element-row{display:grid;grid-template-columns:56px 1fr 32px;align-items:center;gap:8px;font-size:13px}
@@ -113,7 +113,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 <div class="modal" id="modal" onclick="if(event.target===this)closeSaju()">
 <section class="sheet">
 <div class="sheethead"><h2>내 사주 보기</h2><button class="close" onclick="closeSaju()">✕</button></div>
-<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.9.3 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
+<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.10.0 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
 <div class="field"><label>달력 기준</label><div class="seg"><button id="solarBtn" class="on" type="button" onclick="setCalendar('solar')">양력</button><button id="lunarBtn" type="button" onclick="setCalendar('lunar')">음력</button></div><label class="checkrow" id="leapRow"><input id="isLeapMonth" type="checkbox"> 윤달로 입력</label><div class="mode-note" id="calendarNote">양력 생년월일을 입력합니다.</div></div>
 <div class="field"><label>생년월일</label><input id="birth" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="예: 19870323"><div class="mode-note">19870323, 1987-03-23, 1987.03.23 형식으로 입력할 수 있습니다.</div></div>
 <div class="field"><label>출생시간</label>
@@ -122,7 +122,13 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 <option value="0">23:00~01:00 · 자시</option><option value="1">01:00~03:00 · 축시</option><option value="3">03:00~05:00 · 인시</option><option value="5">05:00~07:00 · 묘시</option><option value="7">07:00~09:00 · 진시</option><option value="9">09:00~11:00 · 사시</option><option value="11">11:00~13:00 · 오시</option><option value="13">13:00~15:00 · 미시</option><option value="15">15:00~17:00 · 신시</option><option value="17">17:00~19:00 · 유시</option><option value="19">19:00~21:00 · 술시</option><option value="21">21:00~23:00 · 해시</option>
 </select></div>
 <div class="field"><label>성별</label><div class="seg"><button id="maleBtn" class="on" type="button" onclick="setGender('male')">남성</button><button id="femaleBtn" type="button" onclick="setGender('female')">여성</button></div></div>
-<button class="btn dark full" onclick="readSaju()">사주 읽기</button>
+<div class="field">
+  <label for="concern">지금 가장 궁금한 고민 <span style="font-weight:500;color:var(--muted)">(선택)</span></label>
+  <textarea id="concern" maxlength="240" placeholder="예: 경제적 상황이 나아질까요? 돈을 많이 벌고 싶어요."></textarea>
+  <div class="concern-count"><span id="concernCount">0</span>/240</div>
+  <div class="mode-note">고민을 적으면 그 주제를 중심으로 사주 구조를 다시 읽어드립니다.</div>
+</div>
+<button class="btn dark full" onclick="readSaju()">사주와 고민 함께 읽기</button>
 <div class="error" id="error"></div>
 
 <div class="result" id="result">
@@ -139,13 +145,14 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 </div>
 
 <div class="reading-card">
+  <div class="concern-badge" id="concernBadge" style="display:none">💬 <span id="concernCategory">고민</span> 중심 풀이</div>
   <h3>당신을 읽다</h3>
   <p class="hook-line" id="hookLine">사주를 읽으면, 당신을 붙잡는 첫 문장이 여기에 나타납니다.</p>
   <div class="full-reading" id="fullReading"></div>
 </div>
 
 <div class="analysis-card detail-only">
-  <h3>사주엔진 v0.9.3 정밀 분석</h3>
+  <h3>사주엔진 v0.10.0 정밀 분석</h3>
   <p id="precisionSummary"></p>
   <div class="engine-badges" id="precisionBadges"></div>
   <div class="relation-list" id="relationList"></div>
@@ -222,7 +229,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 </div>
 
 
-<p class="notice">현재 v0.9.3는 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
+<p class="notice">현재 v0.10.0은 고민 분류·삼주/사주 분기·월령·통근·투간·합충형·핵심 구조를 반영합니다. 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
 </div>
 </section>
 </div>
@@ -247,6 +254,7 @@ const errorEl = $('error');
 const resultEl = $('result');
 const rnEl = $('rn');
 const hookLineEl=$('hookLine'), fullReadingEl=$('fullReading');
+const concernEl=$('concern'), concernCountEl=$('concernCount'), concernBadgeEl=$('concernBadge'), concernCategoryEl=$('concernCategory');
 const pyEl = $('py');
 const pmEl = $('pm');
 const pdEl = $('pd');
@@ -757,6 +765,115 @@ function renderPrecision(monthBranch,weighted,relations,engine){
   `<div class="relation-item"><b>관계 구조</b> · 강하게 완성된 합·충·형 구조보다 월령과 일간의 뿌리가 더 중요하게 작용합니다.</div>`);
 }
 
+
+const CONCERN_RULES=[
+ {id:'money',label:'재물·경제',words:['돈','재물','경제','부자','수입','지출','대출','빚','투자','주식','부동산','통장','월급','자산']},
+ {id:'business',label:'사업·부업',words:['부업','사업','창업','매출','수익화','웹앱','장사','프리랜서']},
+ {id:'career',label:'직장·이직',words:['직장','회사','이직','퇴사','승진','취업','커리어','상사','업무','직업']},
+ {id:'love',label:'연애·결혼',words:['연애','결혼','궁합','남자친구','여자친구','배우자','이혼','재회','소개팅']},
+ {id:'family',label:'가족·자녀',words:['가족','부모','아버지','어머니','자녀','아이','딸','아들','육아']},
+ {id:'relationship',label:'인간관계',words:['친구','인간관계','사람','갈등','동료','배신','외로움']},
+ {id:'health',label:'건강·생활',words:['건강','아프','병','수면','피로','운동','생활','스트레스']},
+ {id:'study',label:'진로·시험',words:['시험','공부','합격','자격증','진로','대학','학교','성적']}
+];
+function classifyConcern(text){
+ const clean=String(text||'').trim();
+ if(!clean)return {id:'general',label:'전체 사주',text:'',score:0};
+ let best={id:'general',label:'현재 고민',text:clean,score:0};
+ CONCERN_RULES.forEach(rule=>{
+  const score=rule.words.reduce((n,w)=>n+(clean.includes(w)?1:0),0);
+  if(score>best.score)best={...rule,text:clean,score};
+ });
+ return best;
+}
+function getCoreStructure(dayGan,pillars,weighted,strength,tgRank,relations){
+ const dm=elementMap[dayGan];
+ const wealthGods=['편재','정재'];
+ const officerGods=['편관','정관'];
+ const outputGods=['식신','상관'];
+ const wealthScore=tgRank.filter(x=>wealthGods.includes(x[0])).reduce((s,x)=>s+x[1],0);
+ const officerScore=tgRank.filter(x=>officerGods.includes(x[0])).reduce((s,x)=>s+x[1],0);
+ const outputScore=tgRank.filter(x=>outputGods.includes(x[0])).reduce((s,x)=>s+x[1],0);
+ const weakDay=['신약','중약'].includes(strength.grade);
+ const wealthHeavy=wealthScore>=2.4 || (weakDay && wealthScore>=1.7);
+ const officerHeavy=officerScore>=2.1;
+ const outputToWealth=outputScore>=1.2 && wealthScore>=1.2;
+ const tags=[];
+ if(wealthHeavy&&weakDay)tags.push('재다신약 경향');
+ if(officerHeavy&&weakDay)tags.push('재관 부담');
+ if(outputToWealth)tags.push('식상생재 흐름');
+ if(strength.rooting.roots.length===0)tags.push('통근 약함');
+ if(relations.some(r=>r.type==='반합'||r.type==='삼합'))tags.push('합으로 기운 강화');
+ return {dm,wealthScore,officerScore,outputScore,weakDay,wealthHeavy,officerHeavy,outputToWealth,tags};
+}
+function makeHook(dayGan,strong,core,concern){
+ const objectBy={甲:'큰 나무',乙:'덩굴과 꽃',丙:'태양',丁:'촛불',戊:'큰 산',己:'논밭',庚:'큰 칼',辛:'보석과 조각칼',壬:'큰 바다',癸:'이슬과 빗물'};
+ const target=objectBy[dayGan]||'당신';
+ if(concern.id==='money'||concern.id==='business'){
+  if(core.wealthHeavy&&core.weakDay)return `돈밭은 넓은데, 내 통장은 왜 자꾸 숨이 찰까요?`;
+  if(core.outputToWealth)return `돈 냄새는 잘 맡습니다. 이제 진짜 내 돈으로 바꿀 차례예요.`;
+  return `머릿속에서는 이미 부자인데, 현실은 왜 자꾸 딴소리를 할까요?`;
+ }
+ if(concern.id==='career')return `${target} 하나로 회사라는 숲을 베는 중, 너무 무리하고 있진 않나요?`;
+ if(concern.id==='love')return `겉은 쿨한데, 마음속 연애 회의는 왜 매일 열릴까요?`;
+ if(concern.id==='relationship')return `사람 보는 눈은 빠른데, 왜 인간관계는 늘 숙제일까요?`;
+ if(concern.id==='health')return `의지는 풀충전인데, 몸은 자꾸 절전모드로 들어갑니다.`;
+ if(core.wealthHeavy&&core.weakDay)return `${target} 하나로 돈의 숲을 베는 사람, 욕심보다 체력이 먼저입니다.`;
+ if(dayGan==='辛'&&strong==='목')return `화려한 꽃밭에 놓인 예민한 보석, 반짝이느라 꽤 피곤했겠어요.`;
+ const fallback={
+  목:'할 일은 자꾸 자라나는데, 내 시간은 왜 그대로일까요?',
+  화:'열정은 활활 타는데, 마음은 왜 가끔 재가 될까요?',
+  토:'다 받아주다 보니, 정작 내 자리는 어디로 갔을까요?',
+  금:'정답은 잘 보이는데, 사람 마음은 왜 오답처럼 느껴질까요?',
+  수:'생각은 바다인데, 결정은 왜 자꾸 항구에 묶일까요?'
+ };
+ return fallback[strong]||'사주를 펼치자마자, 당신의 반복 패턴이 먼저 보입니다.';
+}
+function makeConcernReading(concern,dayGan,strong,weak,core,tg1,tg2,hasTime){
+ const baseTime=hasTime?'시주까지 포함해 보니':'출생시간을 제외한 세 기둥만으로 보아도';
+ const safe='운세는 가능성을 읽는 참고이며, 실제 돈·건강·법률 결정은 현실 자료와 전문가 판단을 우선해야 합니다.';
+ const common={
+  money:{
+   title:'돈을 벌 기회보다, 돈이 남는 구조가 먼저입니다',
+   body:`${baseTime}, 재성과 일간의 힘 차이가 중요한 사주입니다. ${core.wealthHeavy?'돈이 될 만한 기회와 욕망은 비교적 크게 보이지만, 한 번에 너무 많은 것을 잡으면 체력·시간·자금이 함께 분산되기 쉽습니다.':'재물은 한 번의 대박보다 능력과 습관을 통해 커지는 흐름에 가깝습니다.'} ${core.outputToWealth?'식상생재 흐름이 있어 지식·기술·아이디어를 결과물로 만들 때 돈과 연결되기 좋습니다.':'수입원을 늘리더라도 이미 잘하는 일에서 출발해야 안정적입니다.'} 지금 필요한 것은 ‘더 큰 한 방’이 아니라 자동저축, 부채 우선순위, 손실한도처럼 감정이 끼어들 틈을 줄이는 시스템입니다.`
+  },
+  business:{
+   title:'부업은 좋습니다. 다만 동시에 세 개는 금지입니다',
+   body:`${baseTime}, 새로운 수익 가능성을 발견하고 기획하는 감각은 살아 있습니다. 하지만 기회가 보인다고 전부 시작하면 완성 전에 에너지가 먼저 바닥날 수 있습니다. 본업을 버리고 뛰기보다, 현재 전문성을 계산기·자료·콘텐츠·웹서비스처럼 반복 판매 가능한 형태로 바꾸고 작은 결제로 검증하는 방식이 잘 맞습니다. 한 달에 하나의 기능만 완성하고, 실제 사용자가 돈을 내는지 확인한 뒤 다음 기능으로 넘어가는 전략이 유리합니다.`
+  },
+  career:{
+   title:'회사에 맞추느라 내 칼날까지 무디게 만들 필요는 없습니다',
+   body:`${baseTime}, 정교함과 판단기준을 쓰는 일에서 강점이 큽니다. 단순 반복보다 분석·기획·설계·검토처럼 오류를 찾아 결과를 개선하는 역할이 잘 맞습니다. 이직은 답답함만으로 결정하기보다 ‘전문성이 더 쌓이는가, 결정권이 커지는가, 보상이 수치로 좋아지는가’를 비교해야 합니다.`
+  },
+  love:{
+   title:'마음은 깊은데, 설명서는 자꾸 생략하는 연애입니다',
+   body:`${baseTime}, 상대를 세심하게 보지만 속마음을 혼자 정리한 뒤 결론만 말하기 쉽습니다. 해결책보다 감정을 먼저 공유하고, 상대가 내 말을 어떻게 들었는지 확인하는 습관이 관계의 긴장을 크게 줄여줍니다.`
+  },
+  family:{
+   title:'가족의 짐까지 다 들면, 결국 아무도 편하지 않습니다',
+   body:`${baseTime}, 책임을 떠안는 패턴이 반복되기 쉽습니다. 가족을 돕더라도 돈·시간·역할의 한계를 먼저 정해야 오래 좋은 관계를 유지할 수 있습니다.`
+  },
+  relationship:{
+   title:'사람 보는 눈은 빠른데, 말끝이 가끔 너무 정확합니다',
+   body:`${baseTime}, 상대의 빈틈과 분위기 변화를 빨리 알아차립니다. 그 능력은 강점이지만 가까운 관계에서는 분석보다 공감이 먼저일 때 훨씬 잘 통합니다.`
+  },
+  health:{
+   title:'정신력으로 버티는 것도 체력 있을 때 이야기입니다',
+   body:`${baseTime}, 압박이 커질수록 생각과 책임을 놓지 못하는 흐름이 보입니다. 사주 해석을 질병 판단으로 쓰지 말고, 수면·식사·운동의 고정 루틴을 먼저 회복하는 신호로 활용하세요. 증상이 있다면 의료진 판단을 우선해야 합니다.`
+  },
+  study:{
+   title:'공부 머리는 있는데, 완벽한 준비를 기다리다 늦어집니다',
+   body:`${baseTime}, 이해하고 구조화하는 힘은 좋습니다. 다만 공부량을 늘리기보다 시험일 기준으로 문제풀이·오답·결과물 마감을 반복하는 방식이 더 잘 맞습니다.`
+  },
+  general:{
+   title:'당신이 약한 게 아니라, 들고 있는 것이 너무 많았습니다',
+   body:`${baseTime}, ${elementLabel(strong)}의 힘을 많이 쓰고 ${elementLabel(weak)}의 기능은 상대적으로 덜 쓰는 구조입니다. 강점으로 시작하되 마무리 단계에서는 일정·숫자·다른 사람의 검토를 빌리는 것이 삶의 반복 실수를 줄여줍니다.`
+  }
+ };
+ const item=common[concern.id]||common.general;
+ return {...item,safe};
+}
+
 function detailedInterpretation(dayGan,counts,strong,weak,pillars){
  const weighted=weightedElementAnalysis(pillars);
  const weightedOrdered=Object.entries(weighted).sort((a,b)=>b[1]-a[1]);
@@ -775,6 +892,9 @@ function detailedInterpretation(dayGan,counts,strong,weak,pillars){
  const strongDay=['신강','중강'].includes(strength.grade);
  const tgRank=analyzeTenGods(dayGan,pillars);
  const tg1=tgRank[0][0],tg2=tgRank[1][0];
+ const concern=classifyConcern(concernEl.value);
+ const core=getCoreStructure(dayGan,pillars,weighted,strength,tgRank,relations);
+ const hasTime=Boolean(pillars[3]);
  const profile=buildPersonalityProfile(dayGan,weighted,tgRank,strong,weak);
  renderPersonalityProfile(profile);
  const dmTone=strongDay?'자기 기준이 분명하고, 상황을 스스로 끌고 가려는 힘이 있는 편':'환경과 사람의 흐름을 잘 읽고, 상황에 맞춰 움직이는 감각이 좋은 편';
@@ -876,39 +996,30 @@ function detailedInterpretation(dayGan,counts,strong,weak,pillars){
  const relationNote=allRelations.length?` 사주 안에서는 ${allRelations.map(r=>r.type).filter((v,i,a)=>a.indexOf(v)===i).join('·')}의 움직임도 보여, 인생의 중요한 시기에 관계나 환경이 바뀌면서 방향을 다시 잡는 일이 생길 수 있습니다.`:'';
  finalConclusionEl.textContent=`당신은 ${elementLabel(strong)}의 힘과 ${tg1}의 성향을 잘 쓸 때 가장 빛납니다. ${TG_DESC[tg1]}이 강점으로 드러나기 때문입니다. 다만 일이 막히거나 마음이 급해지면 ${badBy[strong]} 이때는 더 밀어붙이기보다, 부족한 ${elementLabel(weak)}의 관점으로 한 번만 다시 확인하는 편이 좋습니다. 일을 시작할 때는 당신의 강점을 믿고, 마무리 직전에는 다른 관점을 빌리세요. 이 습관이 직업과 돈, 관계에서 같은 실수를 줄여 줍니다.${relationNote}`;
 
- const hookByDay={
-  甲:'곧고 책임감이 강한 사람입니다.',
-  乙:'부드러워 보여도 속은 단단합니다.',
-  丙:'밝아 보여도 마음은 꽤 섬세합니다.',
-  丁:'차분하지만 안에는 열정이 큽니다.',
-  戊:'쉽게 흔들리지 않는 든든한 사람입니다.',
-  己:'현실적이고 주변을 잘 챙기는 사람입니다.',
-  庚:'기준이 분명하고 결단력이 있습니다.',
-  辛:'섬세하고 완성도를 중요하게 여깁니다.',
-  壬:'시야가 넓고 변화에 빠르게 적응합니다.',
-  癸:'조용하지만 사람과 상황을 깊이 봅니다.'
- };
- const hookByTenGod={
-  비견:'내 기준을 쉽게 바꾸지 않습니다.',
-  겁재:'경쟁 상황에서 힘이 더 살아납니다.',
-  식신:'꾸준히 쌓아 결과로 보여줍니다.',
-  상관:'남들이 놓친 문제를 잘 찾아냅니다.',
-  편재:'기회를 빠르게 알아보는 편입니다.',
-  정재:'안정과 책임을 중요하게 여깁니다.',
-  편관:'압박이 생기면 오히려 집중합니다.',
-  정관:'맡은 일은 끝까지 책임지려 합니다.',
-  편인:'남들과 다른 관점으로 핵심을 봅니다.',
-  정인:'충분히 이해한 뒤 오래 밀고 갑니다.'
- };
- const primaryHook=hookByDay[dayGan]||'자신만의 기준이 분명한 사람입니다.';
- const secondaryHook=hookByTenGod[tg1]||'한번 정한 것은 쉽게 놓지 않습니다.';
- hookLineEl.textContent=`${primaryHook} ${secondaryHook}`;
- const relationSentence=relations.length?`사주 안에는 ${relations.map(r=>r.type).filter((v,i,a)=>a.indexOf(v)===i).join('·')}의 움직임도 함께 보여, 인생의 중요한 시기마다 관계나 환경이 바뀌면서 방향을 다시 세우는 경험이 생기기 쉽습니다.`:'큰 충돌 구조보다 자신의 기준과 생활 리듬이 삶의 방향을 더 크게 좌우하는 사주입니다.';
+ const hook=makeHook(dayGan,strong,core,concern);
+ const concernReading=makeConcernReading(concern,dayGan,strong,weak,core,tg1,tg2,hasTime);
+ hookLineEl.textContent=hook;
+ if(concern.text){
+   concernBadgeEl.style.display='inline-flex';
+   concernCategoryEl.textContent=concern.label;
+ }else{
+   concernBadgeEl.style.display='none';
+ }
+ const timeCaveat=hasTime
+   ?'출생시간까지 포함한 네 기둥을 기준으로 읽었습니다.'
+   :'출생시간을 알 수 없어 시주·자녀운·말년운의 세부 판단은 제외하고, 년주·월주·일주의 공통 구조만 읽었습니다.';
+ const concernIntro=concern.text
+   ?`<div class="reading-section"><h4>${concernReading.title}</h4><p>“${escapeHtml(concern.text)}”라는 고민을 사주 구조와 함께 읽었습니다. ${concernReading.body}</p></div>`
+   :'';
+ const structureTitle=core.tags.length?core.tags.join(' · '):`${elementLabel(strong)} 강세와 ${strength.grade}`;
+ const relationSentence=relations.length?`사주 안에는 ${relations.map(r=>r.type).filter((v,i,a)=>a.indexOf(v)===i).join('·')}의 움직임도 함께 보여, 중요한 시기에 관계나 환경이 바뀌면서 방향을 다시 세우는 경험이 생기기 쉽습니다.`:'큰 충돌 구조보다 자신의 기준과 생활 리듬이 삶의 방향을 더 크게 좌우하는 사주입니다.';
  fullReadingEl.innerHTML=[
-  `<p><span class="reading-label">첫인상과 진짜 성격</span><br>${storyFirstEl.textContent} ${storyInnerEl.textContent}</p>`,
-  `<p><span class="reading-label">일과 돈</span><br>${storyWorkEl.textContent} ${moneyDetailEl.textContent.replace(/ 결론적으로 /g,' ')}</p>`,
-  `<p><span class="reading-label">관계와 감정</span><br>${storyRelationEl.textContent} ${relationSentence}</p>`,
-  `<p><span class="reading-label">앞으로 더 잘 풀리는 방식</span><br>${storyGrowthEl.textContent} ${finalConclusionEl.textContent}</p>`
+   concernIntro,
+   `<div class="reading-section"><h4>${structureTitle}, 이 사주의 중심 이야기</h4><p>${storyFirstEl.textContent} ${storyInnerEl.textContent}</p></div>`,
+   `<div class="reading-section"><h4>일과 돈, 욕심보다 구조가 먼저입니다</h4><p>${storyWorkEl.textContent} ${moneyDetailEl.textContent.replace(/ 결론적으로 /g,' ')}</p></div>`,
+   `<div class="reading-section"><h4>사람 보는 눈은 빠른데, 전달은 천천히</h4><p>${storyRelationEl.textContent} ${relationSentence}</p></div>`,
+   `<div class="reading-section"><h4>복을 현실로 바꾸는 사용법</h4><p>${storyGrowthEl.textContent} ${finalConclusionEl.textContent}</p></div>`,
+   `<div class="time-caveat">${timeCaveat}<br>${concernReading.safe}</div>`
  ].join('');
 }
 
@@ -933,6 +1044,14 @@ birthEl.addEventListener('input',()=>{
  if(digits.length<=4)birthEl.value=digits;
  else if(digits.length<=6)birthEl.value=`${digits.slice(0,4)}-${digits.slice(4)}`;
  else birthEl.value=`${digits.slice(0,4)}-${digits.slice(4,6)}-${digits.slice(6)}`;
+});
+
+
+function escapeHtml(value){
+ return String(value||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+concernEl.addEventListener('input',()=>{
+ concernCountEl.textContent=concernEl.value.length;
 });
 
 function readSaju(){
