@@ -15,7 +15,21 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 8px 24px #46351e0d}.score{font-size:44px;font-weight:850;color:var(--deep)}.score small{font-size:14px;color:var(--muted)}.row{display:flex;justify-content:space-between;align-items:center}.meter{height:10px;background:#eee7db;border-radius:999px;overflow:hidden;margin:14px 0 18px}.meter i{display:block;height:100%;width:83%;background:linear-gradient(90deg,#809a72,#c8a05d)}.quote{line-height:1.65}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.tag{background:var(--soft);color:#4a614a;border-radius:999px;padding:8px 11px;font-size:13px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.menu{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;min-height:126px}.menu strong{display:block;margin-top:16px}.menu p{font-size:13px;color:var(--muted);line-height:1.45}
 .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:#fffdf8ef;backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}.nav button{border:0;background:none;color:var(--muted);font-size:11px}.nav b{display:block;font-size:20px}
-.modal{position:fixed;inset:0;background:#16161261;display:none;align-items:flex-end;justify-content:center;z-index:9}.modal.open{display:flex}.sheet{width:min(520px,100%);max-width:100vw;max-height:92vh;overflow-y:auto;overflow-x:hidden;overscroll-behavior-x:none;background:#fffdf8;border-radius:28px 28px 0 0;padding:22px 20px calc(32px + env(safe-area-inset-bottom))}.sheethead{display:flex;justify-content:space-between;align-items:center}.close{border:0;border-radius:50%;width:36px;height:36px}.field{margin-top:18px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.field input,.field select,.field textarea{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:white;color:var(--ink)}.field textarea{min-height:108px;resize:vertical;line-height:1.55}.concern-count{margin-top:6px;text-align:right;font-size:11px;color:var(--muted)}.concern-badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:10px;padding:7px 10px;border-radius:999px;background:#fff1d7;color:#76541d;font-size:12px;font-weight:750}.reading-section{padding:18px 0;border-top:1px dashed var(--line)}.reading-section:first-child{border-top:0;padding-top:0}.reading-section h4{margin:0 0 9px;font-size:18px;line-height:1.4}.reading-section p{margin:0;line-height:1.8}.time-caveat{margin-top:12px;padding:11px 12px;border-radius:12px;background:#f5f1e8;color:var(--muted);font-size:12px;line-height:1.55}.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{padding:12px;border-radius:13px;border:1px solid var(--line);background:#fff;color:var(--muted)}.seg button.on{background:var(--deep);color:#fff;border-color:var(--deep)}.seg button:disabled{opacity:.45;cursor:not-allowed}.full{width:100%;margin-top:22px}
+.modal{position:fixed;inset:0;background:#16161261;display:none;align-items:flex-end;justify-content:center;z-index:9}.modal.open{display:flex}.sheet{width:min(520px,100%);max-width:100vw;max-height:92vh;overflow-y:auto;overflow-x:hidden;overscroll-behavior-x:none;background:#fffdf8;border-radius:28px 28px 0 0;padding:22px 20px calc(32px + env(safe-area-inset-bottom))}.sheethead{display:flex;justify-content:space-between;align-items:center}.close{border:0;border-radius:50%;width:36px;height:36px}.field{margin-top:18px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.field input,.field select,.field textarea{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:white;color:var(--ink)}.field textarea{min-height:108px;resize:vertical;line-height:1.55}.concern-count{margin-top:6px;text-align:right;font-size:11px;color:var(--muted)}.concern-badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:10px;padding:7px 10px;border-radius:999px;background:#fff1d7;color:#76541d;font-size:12px;font-weight:750}.reading-section{padding:18px 0;border-top:1px dashed var(--line)}.reading-section:first-child{border-top:0;padding-top:0}.reading-section h4{margin:0 0 9px;font-size:18px;line-height:1.4}.reading-section p{margin:0;line-height:1.72}
+.reading-section{padding:22px 0}
+.reading-section h4{font-size:20px;letter-spacing:-.45px}
+.easy-copy{display:grid;gap:10px}
+.easy-copy p{margin:0;line-height:1.7}
+.easy-copy p+p{margin-top:1px}
+.evidence{margin-top:13px;border:1px solid var(--line);border-radius:13px;background:#fffdf9;overflow:hidden}
+.evidence summary{cursor:pointer;list-style:none;padding:11px 13px;font-size:12px;font-weight:800;color:#76541d}
+.evidence summary::-webkit-details-marker{display:none}
+.evidence summary::after{content:'＋';float:right;font-weight:500}
+.evidence[open] summary::after{content:'－'}
+.evidence-body{padding:0 13px 12px;color:var(--muted);font-size:12px;line-height:1.65}
+.one-line{margin:2px 0 15px;padding:17px 18px;border-radius:16px;background:#2f392d;color:#fff;font-size:20px;font-weight:850;line-height:1.45;letter-spacing:-.5px}
+.reading-kicker{font-size:12px;font-weight:800;color:#92723d;margin-bottom:6px}
+.time-caveat{margin-top:12px;padding:11px 12px;border-radius:12px;background:#f5f1e8;color:var(--muted);font-size:12px;line-height:1.55}.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{padding:12px;border-radius:13px;border:1px solid var(--line);background:#fff;color:var(--muted)}.seg button.on{background:var(--deep);color:#fff;border-color:var(--deep)}.seg button:disabled{opacity:.45;cursor:not-allowed}.full{width:100%;margin-top:22px}
 .engine{font-size:12px;color:#49604b;background:#edf3ea;border:1px solid #d5e2d1;padding:11px 12px;border-radius:12px;margin-top:14px;line-height:1.55}
 .result{display:none;margin-top:18px}.result.show{display:block}.summary{background:#f2ecdf;border-radius:18px;padding:18px}.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.pillar{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 4px;text-align:center}.pillar small{color:var(--muted)}.pillar b{display:block;font-size:24px;margin-top:8px;letter-spacing:.08em}.pillar em{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:5px}
 .element-list{display:grid;gap:10px;margin-top:14px}.element-row{display:grid;grid-template-columns:56px 1fr 32px;align-items:center;gap:8px;font-size:13px}
@@ -113,7 +127,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 <div class="modal" id="modal" onclick="if(event.target===this)closeSaju()">
 <section class="sheet">
 <div class="sheethead"><h2>내 사주 보기</h2><button class="close" onclick="closeSaju()">✕</button></div>
-<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.10.0 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
+<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.11.0 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
 <div class="field"><label>달력 기준</label><div class="seg"><button id="solarBtn" class="on" type="button" onclick="setCalendar('solar')">양력</button><button id="lunarBtn" type="button" onclick="setCalendar('lunar')">음력</button></div><label class="checkrow" id="leapRow"><input id="isLeapMonth" type="checkbox"> 윤달로 입력</label><div class="mode-note" id="calendarNote">양력 생년월일을 입력합니다.</div></div>
 <div class="field"><label>생년월일</label><input id="birth" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="예: 19870323"><div class="mode-note">19870323, 1987-03-23, 1987.03.23 형식으로 입력할 수 있습니다.</div></div>
 <div class="field"><label>출생시간</label>
@@ -152,7 +166,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 </div>
 
 <div class="analysis-card detail-only">
-  <h3>사주엔진 v0.10.0 정밀 분석</h3>
+  <h3>사주엔진 v0.11.0 정밀 분석</h3>
   <p id="precisionSummary"></p>
   <div class="engine-badges" id="precisionBadges"></div>
   <div class="relation-list" id="relationList"></div>
@@ -229,7 +243,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 </div>
 
 
-<p class="notice">현재 v0.10.0은 고민 분류·삼주/사주 분기·월령·통근·투간·합충형·핵심 구조를 반영합니다. 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
+<p class="notice">현재 v0.11.0은 고민 분류·삼주/사주 분기·월령·통근·투간·합충형·핵심 구조를 반영합니다. 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
 </div>
 </section>
 </div>
@@ -874,6 +888,115 @@ function makeConcernReading(concern,dayGan,strong,weak,core,tg1,tg2,hasTime){
  return {...item,safe};
 }
 
+
+function evidenceHtml(items){
+ const clean=(items||[]).filter(Boolean);
+ if(!clean.length)return '';
+ return `<details class="evidence"><summary>왜 이렇게 읽었나요?</summary><div class="evidence-body">${clean.map(x=>escapeHtml(x)).join(' · ')}</div></details>`;
+}
+function dayImage(dayGan){
+ return {甲:'큰 나무',乙:'덩굴과 꽃',丙:'태양',丁:'촛불',戊:'큰 산',己:'논밭',庚:'큰 칼',辛:'작고 예리한 보석',壬:'큰 바다',癸:'이슬과 빗물'}[dayGan]||'자기 색이 분명한 사람';
+}
+function simpleCoreCopy(dayGan,strong,weak,core,strength,tg1,tg2,hasTime){
+ const image=dayImage(dayGan);
+ let title='겉보다 속에서 생각이 훨씬 많은 사람입니다';
+ let paras=[
+  `처음에는 차분하고 자기 할 일을 잘하는 사람으로 보입니다.`,
+  `그런데 속으로는 작은 말과 분위기까지 오래 생각하는 편입니다.`,
+  `괜찮다고 말해놓고 혼자 정리하는 시간이 길었을 수 있습니다.`
+ ];
+ if(dayGan==='辛'){
+  title='겉은 차분한데, 속에서는 작은 것까지 다 보고 있습니다';
+  paras=[
+   `당신은 ${image}에 가깝습니다. 깔끔하고 기준이 분명합니다.`,
+   `남들은 그냥 지나치는 작은 실수나 어색한 분위기도 금방 알아챕니다.`,
+   `그래서 일을 잘한다는 말을 듣지만, 가까운 사람에게는 예민하게 보일 때도 있습니다.`
+  ];
+ }
+ if(core.weakDay){
+  paras.push(`약해서가 아닙니다. 한꺼번에 감당하려는 일이 많은 편입니다.`);
+ }
+ return {
+  title, paras,
+  evidence:[`${dayGan} 일간`,`${strength.grade}`,tg1&&`${tg1} 강세`,tg2&&`${tg2} 영향`,hasTime?'시주 포함':'삼주 기준']
+ };
+}
+function simpleMoneyCopy(concern,core,tg1,tg2){
+ const focused=['money','business'].includes(concern.id);
+ let title=focused?'돈 욕심은 있는데, 이상하게 돈은 잘 안 모입니다':'돈은 버는 것보다 남기는 쪽에서 차이가 납니다';
+ let paras=[];
+ if(core.wealthHeavy&&core.weakDay){
+  paras=[
+   `돈을 벌고 싶은 마음도 크고, 돈이 될 만한 기회도 비교적 빨리 보는 편입니다.`,
+   `문제는 기회가 보일 때마다 이것저것 함께 잡으려 한다는 점입니다.`,
+   `그러면 돈보다 시간과 체력이 먼저 빠지고, 벌어도 남는 돈이 적어질 수 있습니다.`,
+   `한 번에 크게 벌려고 하기보다, 잘하는 일 하나를 오래 돈이 되게 만드는 쪽이 맞습니다.`
+  ];
+ } else if(core.outputToWealth){
+  paras=[
+   `당신은 아는 것, 만드는 것, 설명하는 것을 돈으로 바꾸는 힘이 있습니다.`,
+   `특히 기술이나 경험을 반복해서 팔 수 있는 형태로 만들면 좋습니다.`,
+   `새로운 일을 계속 찾기보다, 이미 잘하는 일을 더 쉽게 팔 방법을 찾는 게 빠릅니다.`
+  ];
+ } else {
+  paras=[
+   `돈은 한 번의 큰 행운보다 꾸준히 쌓는 방식이 더 잘 맞습니다.`,
+   `기분에 따라 쓰거나 시작하면 흐름이 흔들릴 수 있습니다.`,
+   `자동이체처럼 생각하지 않아도 돈이 남는 방법을 먼저 만들어두는 편이 좋습니다.`
+  ];
+ }
+ return {
+  title,paras,
+  evidence:[core.wealthHeavy?'재성 강세':'재성 흐름',core.weakDay?'재다신약 경향':null,core.outputToWealth?'식상생재':null,tg1,tg2]
+ };
+}
+function simpleWorkCopy(core,strong){
+ let title='일은 잘하는데, 여러 일을 한꺼번에 떠안는 편입니다';
+ let paras=[
+  `새로운 일을 이해하고 정리하는 속도는 빠른 편입니다.`,
+  `시키는 대로만 반복하는 일보다, 문제를 찾고 고치는 일에서 실력이 드러납니다.`,
+  `다만 잘하니까 일이 계속 몰릴 수 있습니다. 다 받아주면 결국 본인만 지칩니다.`,
+  `시작하기 전에 “어디까지 하면 끝인가”를 정해두는 게 좋습니다.`
+ ];
+ if(core.outputToWealth){
+  title='아는 것과 만드는 것이 결국 돈이 되는 사람입니다';
+  paras=[
+   `아이디어만 내는 것보다, 실제 결과물로 만들 때 운이 살아납니다.`,
+   `기획, 분석, 설계, 글, 기술처럼 실력을 눈에 보이게 만드는 일이 잘 맞습니다.`,
+   `부업도 완전히 새로운 분야보다, 지금 잘하는 일을 작게 상품으로 만드는 쪽이 유리합니다.`,
+   `한 번 만들고 여러 번 팔 수 있는 형태를 먼저 생각해보세요.`
+  ];
+ }
+ return {title,paras,evidence:[core.outputToWealth?'식상생재 흐름':null,core.officerHeavy?'관성 강세':null,`${elementLabel(strong)} 강세`]};
+}
+function simpleRelationCopy(core,relations,dayGan){
+ let title='사람을 잘 보지만, 속마음은 늦게 말하는 편입니다';
+ const paras=[
+  `상대가 어떤 기분인지, 말에 숨은 뜻이 무엇인지 빨리 알아차립니다.`,
+  `그런데 본인 마음은 참다가 결론만 짧게 말할 때가 있습니다.`,
+  `그래서 가까운 사람은 “왜 진작 말하지 않았어?”라고 느낄 수 있습니다.`,
+  `결론을 말하기 전에, 서운했던 이유를 한 문장만 먼저 말해보세요.`
+ ];
+ if(relations.some(r=>r.type==='반합'||r.type==='삼합'||r.type==='육합')){
+  paras.push(`혼자 끙끙거릴 때보다, 믿을 만한 사람과 함께 움직일 때 일이 더 잘 풀립니다.`);
+ }
+ return {title,paras,evidence:[dayGan==='辛'?'신금의 예민함':null,relations.some(r=>r.type==='반합')?'반합 작용':null,relations.some(r=>r.type==='육합')?'육합 작용':null,core.tags.includes('통근 약함')?'통근 약함':null]};
+}
+function simpleActionCopy(concern,core){
+ const by={
+  money:['이번 달에는 새 투자 하나보다, 새는 돈 하나를 먼저 막아보세요.','수입이 생기면 남은 돈을 모으지 말고, 먼저 떼어놓는 게 좋습니다.'],
+  business:['부업 아이디어를 더 찾기보다, 지금 가진 아이디어 하나를 실제로 완성해보세요.','작게 올리고, 누가 쓰는지 확인한 뒤 다음 기능을 붙이세요.'],
+  career:['모든 일을 잘하려고 하지 말고, 내가 반드시 잘해야 하는 일 하나를 정하세요.','성과를 말로만 남기지 말고 숫자나 결과물로 기록해두세요.'],
+  love:['상대가 알아주기를 기다리지 말고, 오늘 마음 하나만 직접 말해보세요.','맞는 말을 하는 것보다 부드럽게 말하는 게 더 중요할 때가 있습니다.'],
+  general:['새로운 일을 하나 더 시작하기보다, 이미 벌인 일 하나를 끝내보세요.','완벽하게 하려 하지 말고, 끝까지 하는 쪽을 선택하세요.']
+ };
+ const arr=by[concern.id]||by.general;
+ return {title='지금 당신에게 필요한 건 거창한 변화가 아닙니다',paras:arr,evidence:[core.tags[0]||'오행과 십성의 균형']};
+}
+function renderEasySection(section){
+ return `<div class="reading-section"><h4>${escapeHtml(section.title)}</h4><div class="easy-copy">${section.paras.map(p=>`<p>${escapeHtml(p)}</p>`).join('')}</div>${evidenceHtml(section.evidence)}</div>`;
+}
+
 function detailedInterpretation(dayGan,counts,strong,weak,pillars){
  const weighted=weightedElementAnalysis(pillars);
  const weightedOrdered=Object.entries(weighted).sort((a,b)=>b[1]-a[1]);
@@ -997,7 +1120,6 @@ function detailedInterpretation(dayGan,counts,strong,weak,pillars){
  finalConclusionEl.textContent=`당신은 ${elementLabel(strong)}의 힘과 ${tg1}의 성향을 잘 쓸 때 가장 빛납니다. ${TG_DESC[tg1]}이 강점으로 드러나기 때문입니다. 다만 일이 막히거나 마음이 급해지면 ${badBy[strong]} 이때는 더 밀어붙이기보다, 부족한 ${elementLabel(weak)}의 관점으로 한 번만 다시 확인하는 편이 좋습니다. 일을 시작할 때는 당신의 강점을 믿고, 마무리 직전에는 다른 관점을 빌리세요. 이 습관이 직업과 돈, 관계에서 같은 실수를 줄여 줍니다.${relationNote}`;
 
  const hook=makeHook(dayGan,strong,core,concern);
- const concernReading=makeConcernReading(concern,dayGan,strong,weak,core,tg1,tg2,hasTime);
  hookLineEl.textContent=hook;
  if(concern.text){
    concernBadgeEl.style.display='inline-flex';
@@ -1005,21 +1127,28 @@ function detailedInterpretation(dayGan,counts,strong,weak,pillars){
  }else{
    concernBadgeEl.style.display='none';
  }
+ const hasTime=Boolean(pillars[3]);
+ const oneLine=concern.id==='money'||concern.id==='business'
+   ?(core.wealthHeavy&&core.weakDay?'돈복이 없는 게 아니라, 들어온 돈을 내 것으로 만드는 연습이 필요한 사람입니다.':'아는 것과 잘하는 것을 돈으로 바꿀수록 운이 살아나는 사람입니다.')
+   :(dayGan==='辛'?'남들이 놓치는 작은 차이를 먼저 알아보는 사람입니다.':'겉으로 보이는 모습보다 속에 더 많은 생각을 품고 있는 사람입니다.');
+ const easySections=[
+   simpleCoreCopy(dayGan,strong,weak,core,strength,tg1,tg2,hasTime),
+   simpleMoneyCopy(concern,core,tg1,tg2),
+   simpleWorkCopy(core,strong),
+   simpleRelationCopy(core,relations,dayGan),
+   simpleActionCopy(concern,core)
+ ];
+ const concernLine=concern.text
+  ?`<div class="reading-kicker">“${escapeHtml(concern.text)}”에 맞춰 읽었습니다</div>`
+  :'';
  const timeCaveat=hasTime
-   ?'출생시간까지 포함한 네 기둥을 기준으로 읽었습니다.'
-   :'출생시간을 알 수 없어 시주·자녀운·말년운의 세부 판단은 제외하고, 년주·월주·일주의 공통 구조만 읽었습니다.';
- const concernIntro=concern.text
-   ?`<div class="reading-section"><h4>${concernReading.title}</h4><p>“${escapeHtml(concern.text)}”라는 고민을 사주 구조와 함께 읽었습니다. ${concernReading.body}</p></div>`
-   :'';
- const structureTitle=core.tags.length?core.tags.join(' · '):`${elementLabel(strong)} 강세와 ${strength.grade}`;
- const relationSentence=relations.length?`사주 안에는 ${relations.map(r=>r.type).filter((v,i,a)=>a.indexOf(v)===i).join('·')}의 움직임도 함께 보여, 중요한 시기에 관계나 환경이 바뀌면서 방향을 다시 세우는 경험이 생기기 쉽습니다.`:'큰 충돌 구조보다 자신의 기준과 생활 리듬이 삶의 방향을 더 크게 좌우하는 사주입니다.';
+  ?'출생시간까지 포함해 읽었습니다.'
+  :'출생시간을 모르므로 시주·자녀운·말년운의 세부 내용은 빼고, 년주·월주·일주에서 공통으로 확인되는 내용만 담았습니다.';
  fullReadingEl.innerHTML=[
-   concernIntro,
-   `<div class="reading-section"><h4>${structureTitle}, 이 사주의 중심 이야기</h4><p>${storyFirstEl.textContent} ${storyInnerEl.textContent}</p></div>`,
-   `<div class="reading-section"><h4>일과 돈, 욕심보다 구조가 먼저입니다</h4><p>${storyWorkEl.textContent} ${moneyDetailEl.textContent.replace(/ 결론적으로 /g,' ')}</p></div>`,
-   `<div class="reading-section"><h4>사람 보는 눈은 빠른데, 전달은 천천히</h4><p>${storyRelationEl.textContent} ${relationSentence}</p></div>`,
-   `<div class="reading-section"><h4>복을 현실로 바꾸는 사용법</h4><p>${storyGrowthEl.textContent} ${finalConclusionEl.textContent}</p></div>`,
-   `<div class="time-caveat">${timeCaveat}<br>${concernReading.safe}</div>`
+   concernLine,
+   `<div class="one-line">${escapeHtml(oneLine)}</div>`,
+   ...easySections.map(renderEasySection),
+   `<div class="time-caveat">${timeCaveat}<br>사주 해석은 삶을 돌아보는 참고용이며, 투자·건강·법률 판단은 실제 자료와 전문가 의견을 우선해주세요.</div>`
  ].join('');
 }
 
