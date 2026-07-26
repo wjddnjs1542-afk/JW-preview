@@ -113,9 +113,9 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 <div class="modal" id="modal" onclick="if(event.target===this)closeSaju()">
 <section class="sheet">
 <div class="sheethead"><h2>내 사주 보기</h2><button class="close" onclick="closeSaju()">✕</button></div>
-<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.9.2 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
+<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.9.3 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
 <div class="field"><label>달력 기준</label><div class="seg"><button id="solarBtn" class="on" type="button" onclick="setCalendar('solar')">양력</button><button id="lunarBtn" type="button" onclick="setCalendar('lunar')">음력</button></div><label class="checkrow" id="leapRow"><input id="isLeapMonth" type="checkbox"> 윤달로 입력</label><div class="mode-note" id="calendarNote">양력 생년월일을 입력합니다.</div></div>
-<div class="field"><label>생년월일</label><input id="birth" type="date" min="1900-01-01" max="2099-12-31"></div>
+<div class="field"><label>생년월일</label><input id="birth" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="예: 19870323"><div class="mode-note">19870323, 1987-03-23, 1987.03.23 형식으로 입력할 수 있습니다.</div></div>
 <div class="field"><label>출생시간</label>
 <select id="birthTime">
 <option value="-1" selected>시간 모름 — 시주는 제외</option>
@@ -145,7 +145,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 </div>
 
 <div class="analysis-card detail-only">
-  <h3>사주엔진 v0.9.2 정밀 분석</h3>
+  <h3>사주엔진 v0.9.3 정밀 분석</h3>
   <p id="precisionSummary"></p>
   <div class="engine-badges" id="precisionBadges"></div>
   <div class="relation-list" id="relationList"></div>
@@ -222,7 +222,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 </div>
 
 
-<p class="notice">현재 v0.9.2는 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
+<p class="notice">현재 v0.9.3는 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
 </div>
 </section>
 </div>
@@ -876,9 +876,33 @@ function detailedInterpretation(dayGan,counts,strong,weak,pillars){
  const relationNote=allRelations.length?` 사주 안에서는 ${allRelations.map(r=>r.type).filter((v,i,a)=>a.indexOf(v)===i).join('·')}의 움직임도 보여, 인생의 중요한 시기에 관계나 환경이 바뀌면서 방향을 다시 잡는 일이 생길 수 있습니다.`:'';
  finalConclusionEl.textContent=`당신은 ${elementLabel(strong)}의 힘과 ${tg1}의 성향을 잘 쓸 때 가장 빛납니다. ${TG_DESC[tg1]}이 강점으로 드러나기 때문입니다. 다만 일이 막히거나 마음이 급해지면 ${badBy[strong]} 이때는 더 밀어붙이기보다, 부족한 ${elementLabel(weak)}의 관점으로 한 번만 다시 확인하는 편이 좋습니다. 일을 시작할 때는 당신의 강점을 믿고, 마무리 직전에는 다른 관점을 빌리세요. 이 습관이 직업과 돈, 관계에서 같은 실수를 줄여 줍니다.${relationNote}`;
 
- const strengthTone=['신강','중강'].includes(strength.grade)?'자기 기준과 버티는 힘이 강하지만, 한번 마음을 굳히면 쉽게 방향을 바꾸지 않는':'주변의 분위기와 사람을 세밀하게 읽지만, 확신이 늦게 생기면 스스로를 의심하기 쉬운';
- const hookTail={비견:'혼자서도 버티지만 진짜 성장은 좋은 동료를 받아들일 때 시작되는',겁재:'승부욕을 감추고 있지만 결정적인 순간에는 절대 물러서지 않는',식신:'조용히 자기 몫을 쌓아 결국 결과로 증명하는',상관:'평범한 답에 만족하지 않고 자기 방식으로 판을 바꾸려는',편재:'기회를 빨리 알아보지만 한곳에 오래 묶이는 것은 답답해하는',정재:'안정과 책임을 중시하지만 마음속에는 더 큰 성취를 원하는',편관:'압박이 클수록 강해지지만 혼자 감당하는 습관이 있는',정관:'바르게 해내려는 마음이 강하지만 타인의 기대까지 짊어지기 쉬운',편인:'남들과 다른 감각이 있지만 끝까지 설명받지 못하면 쉽게 마음을 닫는',정인:'차분히 준비하지만 확신이 서면 누구보다 오래 밀고 가는'}[tg1];
- hookLineEl.textContent=`${strengthTone} 사람, ${hookTail} 당신.`;
+ const hookByDay={
+  甲:'곧고 책임감이 강한 사람입니다.',
+  乙:'부드러워 보여도 속은 단단합니다.',
+  丙:'밝아 보여도 마음은 꽤 섬세합니다.',
+  丁:'차분하지만 안에는 열정이 큽니다.',
+  戊:'쉽게 흔들리지 않는 든든한 사람입니다.',
+  己:'현실적이고 주변을 잘 챙기는 사람입니다.',
+  庚:'기준이 분명하고 결단력이 있습니다.',
+  辛:'섬세하고 완성도를 중요하게 여깁니다.',
+  壬:'시야가 넓고 변화에 빠르게 적응합니다.',
+  癸:'조용하지만 사람과 상황을 깊이 봅니다.'
+ };
+ const hookByTenGod={
+  비견:'내 기준을 쉽게 바꾸지 않습니다.',
+  겁재:'경쟁 상황에서 힘이 더 살아납니다.',
+  식신:'꾸준히 쌓아 결과로 보여줍니다.',
+  상관:'남들이 놓친 문제를 잘 찾아냅니다.',
+  편재:'기회를 빠르게 알아보는 편입니다.',
+  정재:'안정과 책임을 중요하게 여깁니다.',
+  편관:'압박이 생기면 오히려 집중합니다.',
+  정관:'맡은 일은 끝까지 책임지려 합니다.',
+  편인:'남들과 다른 관점으로 핵심을 봅니다.',
+  정인:'충분히 이해한 뒤 오래 밀고 갑니다.'
+ };
+ const primaryHook=hookByDay[dayGan]||'자신만의 기준이 분명한 사람입니다.';
+ const secondaryHook=hookByTenGod[tg1]||'한번 정한 것은 쉽게 놓지 않습니다.';
+ hookLineEl.textContent=`${primaryHook} ${secondaryHook}`;
  const relationSentence=relations.length?`사주 안에는 ${relations.map(r=>r.type).filter((v,i,a)=>a.indexOf(v)===i).join('·')}의 움직임도 함께 보여, 인생의 중요한 시기마다 관계나 환경이 바뀌면서 방향을 다시 세우는 경험이 생기기 쉽습니다.`:'큰 충돌 구조보다 자신의 기준과 생활 리듬이 삶의 방향을 더 크게 좌우하는 사주입니다.';
  fullReadingEl.innerHTML=[
   `<p><span class="reading-label">첫인상과 진짜 성격</span><br>${storyFirstEl.textContent} ${storyInnerEl.textContent}</p>`,
@@ -893,12 +917,31 @@ function timeRangeLabel(h){
  return labels[h]||'출생시간 모름';
 }
 
+
+function parseBirthDate(value){
+ const digits=String(value||'').replace(/\D/g,'');
+ if(digits.length!==8)throw new Error('생년월일 8자리를 입력해주세요. 예: 19870323');
+ const y=Number(digits.slice(0,4)),m=Number(digits.slice(4,6)),d=Number(digits.slice(6,8));
+ if(y<1900||y>2099)throw new Error('연도는 1900년부터 2099년까지 입력할 수 있습니다.');
+ const check=new Date(Date.UTC(y,m-1,d));
+ if(check.getUTCFullYear()!==y||check.getUTCMonth()+1!==m||check.getUTCDate()!==d)throw new Error('올바른 생년월일인지 확인해주세요.');
+ return {y,m,d};
+}
+
+birthEl.addEventListener('input',()=>{
+ const digits=birthEl.value.replace(/\D/g,'').slice(0,8);
+ if(digits.length<=4)birthEl.value=digits;
+ else if(digits.length<=6)birthEl.value=`${digits.slice(0,4)}-${digits.slice(4)}`;
+ else birthEl.value=`${digits.slice(0,4)}-${digits.slice(4,6)}-${digits.slice(6)}`;
+});
+
 function readSaju(){
  errorEl.classList.remove('show');
  if(!birthEl.value){errorEl.textContent='생년월일을 입력해주세요.';errorEl.classList.add('show');return}
- const [inputY,inputM,inputD]=birthEl.value.split('-').map(Number),h=Number(birthTimeEl.value);
- if(calendarType==='solar'&&(inputY<1900||inputY>2099)){errorEl.textContent='양력은 1900년부터 2099년까지 지원합니다.';errorEl.classList.add('show');return}
+ const h=Number(birthTimeEl.value);
  try{
+  const parsed=parseBirthDate(birthEl.value);
+  const inputY=parsed.y,inputM=parsed.m,inputD=parsed.d;
   const resolved=resolveInputDate(inputY,inputM,inputD);
   const y=resolved.y,m=resolved.m,d=resolved.d;
   const r=calculate(y,m,d,h);
