@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f1e7">
+  <title>복을 읽다</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./js/data.js"></script>
+  <script defer src="./js/engine.js"></script>
+  <script defer src="./js/reading.js"></script>
+  <script defer src="./js/app.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div class="brand">복을 읽다</div>
+      <div class="date" id="today"></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-icon">🍀</div>
+      <h1>오늘의 흐름을<br>나답게 읽어보세요.</h1>
+      <p>어려운 명리는 안에서 계산하고, 결과는 쉽고 재미있게 전해드립니다.</p>
+      <div class="actions">
+        <button class="btn primary" id="openSajuBtn" type="button">내 사주 보기</button>
+        <button class="btn ghost" id="todayFortuneBtn" type="button">오늘의 흐름</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>오늘의 흐름</h2>
+        <span>사주 조회 후 열립니다</span>
+      </div>
+      <article class="card">
+        <div class="score-row">
+          <div>
+            <div class="muted small">오늘의 흐름 지수</div>
+            <div class="score"><span id="score">--</span><small>점</small></div>
+          </div>
+          <div id="emoji" class="emoji">🔒</div>
+        </div>
+        <div class="meter"><i id="meter"></i></div>
+        <p id="fortuneText" class="fortune-text">먼저 내 사주를 조회해주세요.</p>
+        <div class="daily-grid">
+          <div class="daily-mini"><b>오늘의 기회</b><span id="dailyChance">-</span></div>
+          <div class="daily-mini"><b>오늘의 주의점</b><span id="dailyCaution">-</span></div>
+          <div class="daily-mini"><b>오늘의 행동</b><span id="dailyAction">-</span></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <nav class="nav">
+    <button type="button"><b>⌂</b>홈</button>
+    <button type="button" id="navSajuBtn"><b>◈</b>사주</button>
+    <button type="button" id="dreamBtn"><b>☾</b>꿈해몽</button>
+    <button type="button" id="navFortuneBtn"><b>♧</b>행운</button>
+  </nav>
+
+  <div class="modal" id="sajuModal" aria-hidden="true">
+    <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="sheet-head">
+        <div>
+          <h2 id="modalTitle">내 사주 보기</h2>
+          <p class="engine-label">복을 읽다 Engine v0.12.0</p>
+        </div>
+        <button class="close" id="closeSajuBtn" type="button" aria-label="닫기">✕</button>
+      </div>
+
+      <form id="sajuForm" novalidate>
+        <div class="field">
+          <label>달력 기준</label>
+          <div class="seg">
+            <button type="button" id="solarBtn" class="on">양력</button>
+            <button type="button" id="lunarBtn">음력</button>
+          </div>
+          <label class="leap-row" id="leapRow">
+            <input id="isLeapMonth" type="checkbox"> 윤달로 입력
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="birth">생년월일</label>
+          <input id="birth" type="text" inputmode="numeric" maxlength="10" placeholder="예: 19870323">
+          <p class="help">19870323, 1987-03-23, 1987.03.23 모두 가능합니다.</p>
+        </div>
+
+        <div class="field">
+          <label for="birthTime">출생시간</label>
+          <select id="birthTime">
+            <option value="-1" selected>시간 모름 — 시주는 제외</option>
+            <option value="0">23:00~01:00 · 자시</option>
+            <option value="1">01:00~03:00 · 축시</option>
+            <option value="3">03:00~05:00 · 인시</option>
+            <option value="5">05:00~07:00 · 묘시</option>
+            <option value="7">07:00~09:00 · 진시</option>
+            <option value="9">09:00~11:00 · 사시</option>
+            <option value="11">11:00~13:00 · 오시</option>
+            <option value="13">13:00~15:00 · 미시</option>
+            <option value="15">15:00~17:00 · 신시</option>
+            <option value="17">17:00~19:00 · 유시</option>
+            <option value="19">19:00~21:00 · 술시</option>
+            <option value="21">21:00~23:00 · 해시</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>성별</label>
+          <div class="seg">
+            <button type="button" id="maleBtn" class="on">남성</button>
+            <button type="button" id="femaleBtn">여성</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="concern">지금 가장 궁금한 고민 <span class="muted">(선택)</span></label>
+          <textarea id="concern" maxlength="240" placeholder="예: 경제적 상황이 나아질까요? 돈을 많이 벌고 싶어요."></textarea>
+          <div class="count"><span id="concernCount">0</span>/240</div>
+        </div>
+
+        <button class="btn dark full" type="submit">사주와 고민 함께 읽기</button>
+        <div class="error" id="errorBox" role="alert"></div>
+      </form>
+
+      <section class="result" id="result">
+        <article class="summary">
+          <h3>당신의 사주</h3>
+          <p id="dateInfo" class="muted small"></p>
+          <div class="pillars">
+            <div class="pillar"><small>년주</small><b id="yearPillar">-</b><em id="yearKorean"></em></div>
+            <div class="pillar"><small>월주</small><b id="monthPillar">-</b><em id="monthKorean"></em></div>
+            <div class="pillar"><small>일주</small><b id="dayPillar">-</b><em id="dayKorean"></em></div>
+            <div class="pillar"><small>시주</small><b id="hourPillar">-</b><em id="hourKorean"></em></div>
+          </div>
+          <div class="tags">
+            <span class="tag" id="dayMaster">일간 · -</span>
+            <span class="tag" id="animal">띠 · -</span>
+            <span class="tag" id="strengthTag">강약 · -</span>
+          </div>
+        </article>
+
+        <article class="reading-card">
+          <div class="concern-badge" id="concernBadge"></div>
+          <h3>당신을 읽다</h3>
+          <p class="hook-line" id="hookLine"></p>
+          <div id="readingBody"></div>
+        </article>
+
+        <p class="notice">출생시간을 모르면 시주·자녀운·말년운의 세부 판단은 제외합니다. 사주 해석은 생활 참고용입니다.</p>
+      </section>
+    </section>
+  </div>
+</body>
+</html>
