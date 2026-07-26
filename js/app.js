@@ -65,6 +65,7 @@
     const reading=window.BokReading.render(a,concern.value,Boolean(calc.hour));
     $('hookLine').textContent=reading.hook;
     $('readingBody').innerHTML=reading.html;
+    $('closingCard').innerHTML=`<h4>${reading.closing.title}</h4>${reading.closing.paras.map(p=>`<p>${p}</p>`).join('')}`;
     result.classList.add('show');
     applyFortune(a,birthData);
     setTimeout(()=>result.scrollIntoView({behavior:'smooth',block:'start'}),50);
@@ -91,6 +92,38 @@
     applyFortune(lastContext.analysis,lastContext.birthData);
   }
 
+
+  function toast(message){
+    let el=document.querySelector('.toast');
+    if(!el){el=document.createElement('div');el.className='toast';document.body.appendChild(el);}
+    el.textContent=message;el.classList.add('show');
+    clearTimeout(window.__bokToast);window.__bokToast=setTimeout(()=>el.classList.remove('show'),1600);
+  }
+  function resultText(){
+    const title=$('hookLine').textContent.trim();
+    const body=$('readingBody').innerText.trim();
+    const close=$('closingCard').innerText.trim();
+    return `복을 읽다\n\n${title}\n\n${body}\n\n${close}`;
+  }
+  async function copyResult(){
+    if(!result.classList.contains('show')){toast('먼저 사주를 조회해주세요.');return;}
+    try{await navigator.clipboard.writeText(resultText());toast('결과를 복사했습니다.');}
+    catch{toast('복사에 실패했습니다.');}
+  }
+  async function shareResult(){
+    if(!result.classList.contains('show')){toast('먼저 사주를 조회해주세요.');return;}
+    const data={title:'복을 읽다',text:resultText(),url:location.href};
+    try{
+      if(navigator.share)await navigator.share(data);
+      else{await navigator.clipboard.writeText(resultText()+'\n'+location.href);toast('공유할 내용을 복사했습니다.');}
+    }catch(err){if(err&&err.name!=='AbortError')toast('공유에 실패했습니다.');}
+  }
+  function newReading(){
+    result.classList.remove('show');
+    clearError();
+    form.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
   function init(){
     $('today').textContent=`${new Date().getMonth()+1}월 ${new Date().getDate()}일`;
     $('openSajuBtn').addEventListener('click',openModal);
@@ -107,6 +140,9 @@
     birth.addEventListener('input',formatInput);
     concern.addEventListener('input',()=>{$('concernCount').textContent=concern.value.length});
     form.addEventListener('submit',submitSaju);
+    $('copyResultBtn').addEventListener('click',copyResult);
+    $('shareResultBtn').addEventListener('click',shareResult);
+    $('newReadingBtn').addEventListener('click',newReading);
 
     if(new URLSearchParams(location.search).get('autotest')==='1'){
       openModal();

@@ -21,7 +21,7 @@
     <section class="hero">
       <div class="hero-icon">🍀</div>
       <h1>오늘의 흐름을<br>나답게 읽어보세요.</h1>
-      <p>어려운 명리는 안에서 계산하고, 결과는 쉽고 재미있게 전해드립니다.</p>
+      <p>어려운 명리는 안에서 계산하고, 결과는 쉽고 재미있게 전해드립니다.</p><div class="hero-chips"><span>✓ 고민 맞춤 풀이</span><span>✓ 시간 모름 지원</span><span>✓ 명리 근거 보기</span></div>
       <div class="actions">
         <button class="btn primary" id="openSajuBtn" type="button">내 사주 보기</button>
         <button class="btn ghost" id="todayFortuneBtn" type="button">오늘의 흐름</button>
@@ -64,7 +64,7 @@
       <div class="sheet-head">
         <div>
           <h2 id="modalTitle">내 사주 보기</h2>
-          <p class="engine-label">복을 읽다 Engine v0.12.1</p>
+          <p class="engine-label">복을 읽다 Engine v1.0.0</p>
         </div>
         <button class="close" id="closeSajuBtn" type="button" aria-label="닫기">✕</button>
       </div>
@@ -141,14 +141,19 @@
           </div>
         </article>
 
+        <div class="result-actions">
+          <button type="button" class="mini-btn" id="copyResultBtn">결과 복사</button>
+          <button type="button" class="mini-btn" id="shareResultBtn">공유하기</button>
+          <button type="button" class="mini-btn" id="newReadingBtn">다시 보기</button>
+        </div>
         <article class="reading-card">
           <div class="concern-badge" id="concernBadge"></div>
           <h3>당신을 읽다</h3>
           <p class="hook-line" id="hookLine"></p>
-          <div id="readingBody"></div>
+          <div id="readingBody"></div><div class="closing-card" id="closingCard"></div>
         </article>
 
-        <p class="notice">출생시간을 모르면 시주·자녀운·말년운의 세부 판단은 제외합니다. 사주 해석은 생활 참고용입니다.</p>
+        <p class="notice">출생시간을 모르면 시주·자녀운·말년운의 세부 판단은 제외합니다. 사주 해석은 생활 참고용이며, 합격·투자·건강 같은 중요한 결과를 단정하지 않습니다.</p>
       </section>
     </section>
   </div>

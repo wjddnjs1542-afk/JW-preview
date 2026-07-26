@@ -173,9 +173,14 @@
       relations:branchRelations(pillars),
       wealthHeavy,outputToWealth:outputScore>=1.2&&wealthScore>=1.2,
       officerHeavy:officerScore>=2.1,
+      wealthScore,outputScore,officerScore,
+      supportType:str.grade,
+      hasTime:Boolean(calc.hour),
+      monthBranch:calc.month[1],
       tags:[
         wealthHeavy&&weak?'재다신약 경향':null,
         outputScore>=1.2&&wealthScore>=1.2?'식상생재 흐름':null,
+        officerScore>=2.1?'관성 강세':null,
         str.root.label,
         ...branchRelations(pillars)
       ].filter(Boolean)
