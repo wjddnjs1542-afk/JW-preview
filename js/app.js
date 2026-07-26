@@ -124,6 +124,16 @@
     form.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
+
+  function handleReaction(e){
+    const btn=e.target.closest('[data-reaction]');
+    if(!btn)return;
+    document.querySelectorAll('[data-reaction]').forEach(x=>x.classList.remove('selected'));
+    btn.classList.add('selected');
+    try{localStorage.setItem('bok-reading-reaction',btn.dataset.reaction);}catch{}
+    $('reactionThanks').textContent='고맙습니다. 첫 공개판을 다듬는 데 참고하겠습니다.';
+  }
+
   function init(){
     $('today').textContent=`${new Date().getMonth()+1}월 ${new Date().getDate()}일`;
     $('openSajuBtn').addEventListener('click',openModal);
@@ -143,6 +153,7 @@
     $('copyResultBtn').addEventListener('click',copyResult);
     $('shareResultBtn').addEventListener('click',shareResult);
     $('newReadingBtn').addEventListener('click',newReading);
+    $('reactionBox').addEventListener('click',handleReaction);
 
     if(new URLSearchParams(location.search).get('autotest')==='1'){
       openModal();
