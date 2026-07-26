@@ -7,15 +7,15 @@
 <title>복을 읽다 · 자체 사주 엔진</title>
 <style>
 :root{--bg:#f6f1e7;--card:#fffdf8;--ink:#25231f;--muted:#7d766c;--line:#e8dfd1;--deep:#253629;--soft:#e9f0e7;--gold:#b58a45;--danger:#a13c35}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:linear-gradient(180deg,#fbf7ef,#f6f1e7);color:var(--ink)}
-button,input,select{font:inherit}.app{max-width:520px;margin:auto;min-height:100vh;padding:18px 18px 100px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.brand{font-size:20px;font-weight:800}.date{font-size:13px;color:var(--muted);padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#ffffffa8}
+*{box-sizing:border-box}html,body{width:100%;max-width:100%;overflow-x:hidden;overscroll-behavior-x:none}body{margin:0;touch-action:pan-y;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;background:linear-gradient(180deg,#fbf7ef,#f6f1e7);color:var(--ink)}
+button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min-height:100vh;padding:18px 18px 100px;overflow-x:hidden}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.brand{font-size:20px;font-weight:800}.date{font-size:13px;color:var(--muted);padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#ffffffa8}
 .hero{background:linear-gradient(145deg,#273c2b,#37533c);color:#fff;border-radius:30px;padding:30px 24px;box-shadow:0 12px 35px #3f301a1a}.hero h1{font-size:34px;line-height:1.15;letter-spacing:-.06em;margin:14px 0 12px}.hero p{color:#ffffffc7;line-height:1.6}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
 .btn{border:0;border-radius:16px;padding:15px 14px;font-weight:750;cursor:pointer}.primary{background:#f5e7c8;color:#2f342d}.ghost{background:#ffffff1f;color:#fff;border:1px solid #ffffff2e}.dark{background:var(--deep);color:#fff}
 .title{display:flex;justify-content:space-between;align-items:end;margin:28px 2px 12px}.title h2{font-size:19px;margin:0}.title span{font-size:12px;color:var(--muted)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 8px 24px #46351e0d}.score{font-size:44px;font-weight:850;color:var(--deep)}.score small{font-size:14px;color:var(--muted)}.row{display:flex;justify-content:space-between;align-items:center}.meter{height:10px;background:#eee7db;border-radius:999px;overflow:hidden;margin:14px 0 18px}.meter i{display:block;height:100%;width:83%;background:linear-gradient(90deg,#809a72,#c8a05d)}.quote{line-height:1.65}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.tag{background:var(--soft);color:#4a614a;border-radius:999px;padding:8px 11px;font-size:13px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.menu{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;min-height:126px}.menu strong{display:block;margin-top:16px}.menu p{font-size:13px;color:var(--muted);line-height:1.45}
 .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:#fffdf8ef;backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom))}.nav button{border:0;background:none;color:var(--muted);font-size:11px}.nav b{display:block;font-size:20px}
-.modal{position:fixed;inset:0;background:#16161261;display:none;align-items:flex-end;justify-content:center;z-index:9}.modal.open{display:flex}.sheet{width:min(520px,100%);max-height:92vh;overflow:auto;background:#fffdf8;border-radius:28px 28px 0 0;padding:22px 20px calc(32px + env(safe-area-inset-bottom))}.sheethead{display:flex;justify-content:space-between;align-items:center}.close{border:0;border-radius:50%;width:36px;height:36px}.field{margin-top:18px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.field input,.field select{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:white}.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{padding:12px;border-radius:13px;border:1px solid var(--line);background:#fff;color:var(--muted)}.seg button.on{background:var(--deep);color:#fff;border-color:var(--deep)}.seg button:disabled{opacity:.45;cursor:not-allowed}.full{width:100%;margin-top:22px}
+.modal{position:fixed;inset:0;background:#16161261;display:none;align-items:flex-end;justify-content:center;z-index:9}.modal.open{display:flex}.sheet{width:min(520px,100%);max-width:100vw;max-height:92vh;overflow-y:auto;overflow-x:hidden;overscroll-behavior-x:none;background:#fffdf8;border-radius:28px 28px 0 0;padding:22px 20px calc(32px + env(safe-area-inset-bottom))}.sheethead{display:flex;justify-content:space-between;align-items:center}.close{border:0;border-radius:50%;width:36px;height:36px}.field{margin-top:18px}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.field input,.field select{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:white}.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{padding:12px;border-radius:13px;border:1px solid var(--line);background:#fff;color:var(--muted)}.seg button.on{background:var(--deep);color:#fff;border-color:var(--deep)}.seg button:disabled{opacity:.45;cursor:not-allowed}.full{width:100%;margin-top:22px}
 .engine{font-size:12px;color:#49604b;background:#edf3ea;border:1px solid #d5e2d1;padding:11px 12px;border-radius:12px;margin-top:14px;line-height:1.55}
 .result{display:none;margin-top:18px}.result.show{display:block}.summary{background:#f2ecdf;border-radius:18px;padding:18px}.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.pillar{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 4px;text-align:center}.pillar small{color:var(--muted)}.pillar b{display:block;font-size:24px;margin-top:8px;letter-spacing:.08em}.pillar em{display:block;font-style:normal;font-size:11px;color:var(--muted);margin-top:5px}
 .element-list{display:grid;gap:10px;margin-top:14px}.element-row{display:grid;grid-template-columns:56px 1fr 32px;align-items:center;gap:8px;font-size:13px}
@@ -73,6 +73,11 @@ button,input,select{font:inherit}.app{max-width:520px;margin:auto;min-height:100
 .detail-intro h3{margin:0 0 8px}.detail-intro p{margin:0;color:#5f5a52;line-height:1.75;font-size:14px}.bar{height:9px;background:#eee7db;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#809a72,#c8a05d);border-radius:99px}
 .analysis-card{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px}.analysis-card h3{margin:0 0 8px;font-size:16px}.analysis-card p{margin:0;color:#5f5a52;line-height:1.75;font-size:14px}.detail-only{display:none}.detail-only.show{display:block}.checkrow{display:none;margin-top:12px;padding:12px 14px;background:#f5f0e7;border-radius:14px;color:var(--muted);font-size:13px}.checkrow.show{display:flex;align-items:center;gap:8px}.checkrow input{width:auto}.mode-note{margin-top:10px;font-size:12px;color:var(--muted);line-height:1.55}.notice{font-size:12px;color:var(--muted);line-height:1.55;margin-top:14px}.error{display:none;color:var(--danger);background:#fff0ed;border-radius:12px;padding:12px;margin-top:12px;font-size:13px}.error.show{display:block}
 .test-ok{color:#49604b}.test-bad{color:var(--danger)}
+
+.reading-card{margin-top:14px;background:#fffdf8;border:1px solid var(--line);border-radius:22px;padding:22px 20px;box-shadow:0 8px 24px #46351e0d}
+.reading-card h3{margin:0 0 14px;font-size:20px}.hook-line{font-size:22px;line-height:1.48;font-weight:850;letter-spacing:-.04em;color:#28412e;margin:0 0 18px;padding-bottom:17px;border-bottom:1px solid var(--line)}
+.full-reading{font-size:15px;line-height:1.95;color:#4d4942;word-break:keep-all;overflow-wrap:anywhere}.full-reading p{margin:0 0 17px}.full-reading p:last-child{margin-bottom:0}.reading-label{display:inline-block;margin-bottom:8px;color:#96723a;font-size:12px;font-weight:800;letter-spacing:.03em}
+@media(max-width:420px){.app{padding-left:14px;padding-right:14px}.hero{padding:26px 20px}.hero h1{font-size:30px}.card,.reading-card{padding:18px 16px}.hook-line{font-size:20px}.pillars{gap:5px}.pillar b{font-size:21px}.top{gap:8px}.date{white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -108,17 +113,15 @@ button,input,select{font:inherit}.app{max-width:520px;margin:auto;min-height:100
 <div class="modal" id="modal" onclick="if(event.target===this)closeSaju()">
 <section class="sheet">
 <div class="sheethead"><h2>내 사주 보기</h2><button class="close" onclick="closeSaju()">✕</button></div>
-<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.9 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
-<div class="field"><label>이름</label><input id="name" placeholder="이름을 입력하세요"></div>
+<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.9.2 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
 <div class="field"><label>달력 기준</label><div class="seg"><button id="solarBtn" class="on" type="button" onclick="setCalendar('solar')">양력</button><button id="lunarBtn" type="button" onclick="setCalendar('lunar')">음력</button></div><label class="checkrow" id="leapRow"><input id="isLeapMonth" type="checkbox"> 윤달로 입력</label><div class="mode-note" id="calendarNote">양력 생년월일을 입력합니다.</div></div>
 <div class="field"><label>생년월일</label><input id="birth" type="date" min="1900-01-01" max="2099-12-31"></div>
 <div class="field"><label>출생시간</label>
 <select id="birthTime">
-<option value="-1">모름 — 시주는 제외</option>
-<option value="0">00:00 · 자시</option><option value="1">01:00 · 축시</option><option value="3">03:00 · 인시</option><option value="5">05:00 · 묘시</option><option value="7">07:00 · 진시</option><option value="9">09:00 · 사시</option><option value="11">11:00 · 오시</option><option value="13" selected>13:00 · 미시</option><option value="15">15:00 · 신시</option><option value="17">17:00 · 유시</option><option value="19">19:00 · 술시</option><option value="21">21:00 · 해시</option><option value="23">23:00 · 자시</option>
+<option value="-1" selected>시간 모름 — 시주는 제외</option>
+<option value="0">23:00~01:00 · 자시</option><option value="1">01:00~03:00 · 축시</option><option value="3">03:00~05:00 · 인시</option><option value="5">05:00~07:00 · 묘시</option><option value="7">07:00~09:00 · 진시</option><option value="9">09:00~11:00 · 사시</option><option value="11">11:00~13:00 · 오시</option><option value="13">13:00~15:00 · 미시</option><option value="15">15:00~17:00 · 신시</option><option value="17">17:00~19:00 · 유시</option><option value="19">19:00~21:00 · 술시</option><option value="21">21:00~23:00 · 해시</option>
 </select></div>
 <div class="field"><label>성별</label><div class="seg"><button id="maleBtn" class="on" type="button" onclick="setGender('male')">남성</button><button id="femaleBtn" type="button" onclick="setGender('female')">여성</button></div></div>
-<div class="field"><label>해석 분량</label><div class="seg"><button id="briefBtn" class="on" type="button" onclick="setDetailMode('brief')">간략히 보기</button><button id="detailBtn" type="button" onclick="setDetailMode('detail')">상세히 보기</button></div><div class="mode-note">상세 해석은 명리 용어를 괄호 안에 풀어서 설명합니다.</div></div>
 <button class="btn dark full" onclick="readSaju()">사주 읽기</button>
 <div class="error" id="error"></div>
 
@@ -135,18 +138,24 @@ button,input,select{font:inherit}.app{max-width:520px;margin:auto;min-height:100
 <div class="tags"><span class="tag" id="dayMaster">일간 · -</span><span class="tag" id="animal">띠 · -</span><span class="tag" id="dominant">강한 오행 · -</span></div>
 </div>
 
+<div class="reading-card">
+  <h3>당신을 읽다</h3>
+  <p class="hook-line" id="hookLine">사주를 읽으면, 당신을 붙잡는 첫 문장이 여기에 나타납니다.</p>
+  <div class="full-reading" id="fullReading"></div>
+</div>
+
 <div class="analysis-card detail-only">
-  <h3>사주엔진 v0.9 정밀 분석</h3>
+  <h3>사주엔진 v0.9.2 정밀 분석</h3>
   <p id="precisionSummary"></p>
   <div class="engine-badges" id="precisionBadges"></div>
   <div class="relation-list" id="relationList"></div>
 </div>
 
-<div class="analysis-card"><h3>오행 구성</h3><div class="element-list" id="elements"></div><p class="notice">천간과 지지의 표면 오행을 동일 가중치로 집계한 기본 분석입니다.</p></div>
-<div class="analysis-card"><h3>기본 성향</h3><p id="personality"></p></div>
-<div class="analysis-card"><h3>균형 포인트</h3><p id="balance"></p></div>
-<div class="analysis-card"><h3>일과 재물의 흐름</h3><p id="career"></p></div>
-<div class="analysis-card"><h3>관계의 흐름</h3><p id="relation"></p></div>
+<div class="analysis-card detail-only"><h3>오행 구성</h3><div class="element-list" id="elements"></div><p class="notice">천간과 지지의 표면 오행을 동일 가중치로 집계한 기본 분석입니다.</p></div>
+<div class="analysis-card detail-only"><h3>기본 성향</h3><p id="personality"></p></div>
+<div class="analysis-card detail-only"><h3>균형 포인트</h3><p id="balance"></p></div>
+<div class="analysis-card detail-only"><h3>일과 재물의 흐름</h3><p id="career"></p></div>
+<div class="analysis-card detail-only"><h3>관계의 흐름</h3><p id="relation"></p></div>
 
 <div class="analysis-card detail-only"><h3>사주의 중심 기운</h3><p id="coreDetail"></p></div>
 <div class="analysis-card detail-only"><h3>기운의 강약과 균형</h3><p id="strengthDetail"></p></div>
@@ -213,7 +222,7 @@ button,input,select{font:inherit}.app{max-width:520px;margin:auto;min-height:100
 </div>
 
 
-<p class="notice">현재 v0.4는 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
+<p class="notice">현재 v0.9.2는 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
 </div>
 </section>
 </div>
@@ -234,10 +243,10 @@ const placeEl = $('p');
 const meterEl = $('meter');
 const birthEl = $('birth');
 const birthTimeEl = $('birthTime');
-const nameEl = $('name');
 const errorEl = $('error');
 const resultEl = $('result');
 const rnEl = $('rn');
+const hookLineEl=$('hookLine'), fullReadingEl=$('fullReading');
 const pyEl = $('py');
 const pmEl = $('pm');
 const pdEl = $('pd');
@@ -866,6 +875,22 @@ function detailedInterpretation(dayGan,counts,strong,weak,pillars){
  const allRelations=[...stemRelations,...relations];
  const relationNote=allRelations.length?` 사주 안에서는 ${allRelations.map(r=>r.type).filter((v,i,a)=>a.indexOf(v)===i).join('·')}의 움직임도 보여, 인생의 중요한 시기에 관계나 환경이 바뀌면서 방향을 다시 잡는 일이 생길 수 있습니다.`:'';
  finalConclusionEl.textContent=`당신은 ${elementLabel(strong)}의 힘과 ${tg1}의 성향을 잘 쓸 때 가장 빛납니다. ${TG_DESC[tg1]}이 강점으로 드러나기 때문입니다. 다만 일이 막히거나 마음이 급해지면 ${badBy[strong]} 이때는 더 밀어붙이기보다, 부족한 ${elementLabel(weak)}의 관점으로 한 번만 다시 확인하는 편이 좋습니다. 일을 시작할 때는 당신의 강점을 믿고, 마무리 직전에는 다른 관점을 빌리세요. 이 습관이 직업과 돈, 관계에서 같은 실수를 줄여 줍니다.${relationNote}`;
+
+ const strengthTone=['신강','중강'].includes(strength.grade)?'자기 기준과 버티는 힘이 강하지만, 한번 마음을 굳히면 쉽게 방향을 바꾸지 않는':'주변의 분위기와 사람을 세밀하게 읽지만, 확신이 늦게 생기면 스스로를 의심하기 쉬운';
+ const hookTail={비견:'혼자서도 버티지만 진짜 성장은 좋은 동료를 받아들일 때 시작되는',겁재:'승부욕을 감추고 있지만 결정적인 순간에는 절대 물러서지 않는',식신:'조용히 자기 몫을 쌓아 결국 결과로 증명하는',상관:'평범한 답에 만족하지 않고 자기 방식으로 판을 바꾸려는',편재:'기회를 빨리 알아보지만 한곳에 오래 묶이는 것은 답답해하는',정재:'안정과 책임을 중시하지만 마음속에는 더 큰 성취를 원하는',편관:'압박이 클수록 강해지지만 혼자 감당하는 습관이 있는',정관:'바르게 해내려는 마음이 강하지만 타인의 기대까지 짊어지기 쉬운',편인:'남들과 다른 감각이 있지만 끝까지 설명받지 못하면 쉽게 마음을 닫는',정인:'차분히 준비하지만 확신이 서면 누구보다 오래 밀고 가는'}[tg1];
+ hookLineEl.textContent=`${strengthTone} 사람, ${hookTail} 당신.`;
+ const relationSentence=relations.length?`사주 안에는 ${relations.map(r=>r.type).filter((v,i,a)=>a.indexOf(v)===i).join('·')}의 움직임도 함께 보여, 인생의 중요한 시기마다 관계나 환경이 바뀌면서 방향을 다시 세우는 경험이 생기기 쉽습니다.`:'큰 충돌 구조보다 자신의 기준과 생활 리듬이 삶의 방향을 더 크게 좌우하는 사주입니다.';
+ fullReadingEl.innerHTML=[
+  `<p><span class="reading-label">첫인상과 진짜 성격</span><br>${storyFirstEl.textContent} ${storyInnerEl.textContent}</p>`,
+  `<p><span class="reading-label">일과 돈</span><br>${storyWorkEl.textContent} ${moneyDetailEl.textContent.replace(/ 결론적으로 /g,' ')}</p>`,
+  `<p><span class="reading-label">관계와 감정</span><br>${storyRelationEl.textContent} ${relationSentence}</p>`,
+  `<p><span class="reading-label">앞으로 더 잘 풀리는 방식</span><br>${storyGrowthEl.textContent} ${finalConclusionEl.textContent}</p>`
+ ].join('');
+}
+
+function timeRangeLabel(h){
+ const labels={0:'23:00~01:00',1:'01:00~03:00',3:'03:00~05:00',5:'05:00~07:00',7:'07:00~09:00',9:'09:00~11:00',11:'11:00~13:00',13:'13:00~15:00',15:'15:00~17:00',17:'17:00~19:00',19:'19:00~21:00',21:'21:00~23:00'};
+ return labels[h]||'출생시간 모름';
 }
 
 function readSaju(){
@@ -879,10 +904,10 @@ function readSaju(){
   const r=calculate(y,m,d,h);
   lastCalculationMeta=r;
   const Y=pillar(r.year.idx),M=pillar(r.month.idx),D=pillar(r.day.idx),H=r.hour?pillar(r.hour.idx):'미상';
-  rnEl.textContent=nameEl.value.trim()||'당신';
+  rnEl.textContent='당신';
   pyEl.textContent=Y;pmEl.textContent=M;pdEl.textContent=D;ptEl.textContent=H;
   pyeEl.textContent=pillarKorean(r.year.idx);pmeEl.textContent=pillarKorean(r.month.idx);pdeEl.textContent=pillarKorean(r.day.idx);pteEl.textContent=r.hour?pillarKorean(r.hour.idx):'출생시간 필요';
-  dateInfoEl.textContent=`${resolved.label}${h>=0?` · ${String(h).padStart(2,'0')}:00`:''} · 한국 표준시 기준 · 월주 기준 절기: ${r.solarTerm.name}(${formatKstTerm(r.solarTerm.at)})`;
+  dateInfoEl.textContent=`${resolved.label}${h>=0?` · ${timeRangeLabel(h)}`:' · 출생시간 모름'} · 한국 표준시 기준 · 월주 기준 절기: ${r.solarTerm.name}(${formatKstTerm(r.solarTerm.at)})`;
   const dg=D[0];
   dayMasterEl.textContent=`일간 · ${dg}${elementMap[dg]}`;
   animalEl.textContent=`띠 · ${ANIMALS[r.year.idx%12]}`;
@@ -895,7 +920,7 @@ function readSaju(){
   lastSajuContext={y,m,d,h,dayGan:dg,strong:weightedOrderNow[0][0],weak:weightedOrderNow[weightedOrderNow.length-1][0]};
   applyFortune(generateDailyFortune(lastSajuContext));
   detailedInterpretation(dg,counts,ordered[0][0],ordered[ordered.length-1][0],[Y,M,D,r.hour?H:null]);
-  document.querySelectorAll('.detail-only').forEach(el=>el.classList.toggle('show',detailMode==='detail'));
+  document.querySelectorAll('.detail-only').forEach(el=>el.classList.remove('show'));
   resultEl.classList.add('show');
   setTimeout(()=>resultEl.scrollIntoView({behavior:'smooth',block:'start'}),50);
  }catch(e){
