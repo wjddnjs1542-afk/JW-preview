@@ -127,7 +127,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 <div class="modal" id="modal" onclick="if(event.target===this)closeSaju()">
 <section class="sheet">
 <div class="sheethead"><h2>내 사주 보기</h2><button class="close" onclick="closeSaju()">✕</button></div>
-<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.11.0 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
+<div class="engine">✓ 복을 읽다 자체 계산 엔진 v0.11.1 · 절기 시각·통근·투간·합충형 분석<br><span id="engineTest">엔진 검증 중…</span></div>
 <div class="field"><label>달력 기준</label><div class="seg"><button id="solarBtn" class="on" type="button" onclick="setCalendar('solar')">양력</button><button id="lunarBtn" type="button" onclick="setCalendar('lunar')">음력</button></div><label class="checkrow" id="leapRow"><input id="isLeapMonth" type="checkbox"> 윤달로 입력</label><div class="mode-note" id="calendarNote">양력 생년월일을 입력합니다.</div></div>
 <div class="field"><label>생년월일</label><input id="birth" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="예: 19870323"><div class="mode-note">19870323, 1987-03-23, 1987.03.23 형식으로 입력할 수 있습니다.</div></div>
 <div class="field"><label>출생시간</label>
@@ -166,7 +166,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 </div>
 
 <div class="analysis-card detail-only">
-  <h3>사주엔진 v0.11.0 정밀 분석</h3>
+  <h3>사주엔진 v0.11.1 정밀 분석</h3>
   <p id="precisionSummary"></p>
   <div class="engine-badges" id="precisionBadges"></div>
   <div class="relation-list" id="relationList"></div>
@@ -243,7 +243,7 @@ button,input,select{font:inherit}.app{width:100%;max-width:520px;margin:auto;min
 </div>
 
 
-<p class="notice">현재 v0.11.0은 고민 분류·삼주/사주 분기·월령·통근·투간·합충형·핵심 구조를 반영합니다. 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
+<p class="notice">현재 v0.11.1은 고민 분류·삼주/사주 분기·월령·통근·투간·합충형·핵심 구조를 반영합니다. 양력 1900~2099년, 음력 1900~2050년을 지원합니다. 년주·월주는 절입 기준의 일 단위 근사값을 사용하므로 절기 전환 당일 출생자는 향후 시각 단위 절기 엔진에서 보정될 수 있습니다. 생활 참고용 해석이며 중요한 의사결정을 대신하지 않습니다.</p>
 </div>
 </section>
 </div>
@@ -991,7 +991,7 @@ function simpleActionCopy(concern,core){
   general:['새로운 일을 하나 더 시작하기보다, 이미 벌인 일 하나를 끝내보세요.','완벽하게 하려 하지 말고, 끝까지 하는 쪽을 선택하세요.']
  };
  const arr=by[concern.id]||by.general;
- return {title='지금 당신에게 필요한 건 거창한 변화가 아닙니다',paras:arr,evidence:[core.tags[0]||'오행과 십성의 균형']};
+ return {title:'지금 당신에게 필요한 건 거창한 변화가 아닙니다',paras:arr,evidence:[core.tags[0]||'오행과 십성의 균형']};
 }
 function renderEasySection(section){
  return `<div class="reading-section"><h4>${escapeHtml(section.title)}</h4><div class="easy-copy">${section.paras.map(p=>`<p>${escapeHtml(p)}</p>`).join('')}</div>${evidenceHtml(section.evidence)}</div>`;
